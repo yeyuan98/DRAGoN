@@ -4,12 +4,14 @@ This is a guide to contributing to this project.
 
 This workflow contains custom C++ sources which must be compiled. No extra actions are necessary if using the Docker container with the awsbatch executor (see below).
 
-To compile, you should first create and activate the Conda environment defining the required packages, then use cmake to build the project.
+To compile, you should first create and activate the Conda environment defining the required packages, then use cmake to build the project. Please make sure that you have installed make and static library linker tools (the `apt-get` commands below are example for Ubuntu).
 ```bash
+sudo apt-get install make
+sudo apt-get install binutils
 cd /where/you/cloned/this/repository
 conda env create --force --file conf/conda/drugseq-env.yml
 conda activate drugseq-env
-cmake . -B build -DCMAKE_MAKE_PROGRAM=qmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(realpath .) -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_MODULE_PATH=${CONDA_PREFIX}/unpacked_source/cmake
+cmake . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(realpath .) -DCMAKE_PREFIX_PATH=${CONDA_PREFIX} -DCMAKE_MODULE_PATH=${CONDA_PREFIX}/unpacked_source/cmake
 cmake --build build --target test install/strip --parallel
 ```
 

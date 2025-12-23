@@ -5,7 +5,7 @@ dependencies:
   - conda-forge::cmake=3.29.2
   - conda-forge::make=4.4.1
   - bioconda::kseqpp=1.1.2
-  - conda-forge::eigen=3.2=3
+  - conda-forge::eigen=3.2
   - conda-forge::gcc=13.2.0
   - conda-forge::gxx=13.2.0
   - conda-forge::binutils=2.40
